@@ -24,7 +24,6 @@ public class Client extends Societe {
         super(idSociete, raisonSociale, numRue, nomRue, cdPostal, ville, telephone, mail, commentaire);
         setChiffreAffaire(p_chiffreAffaire);
         setNbrEmploye(p_nbrEmployes);
-        ListClients.getClientList().add(this);
     }
     //public Client ()throws EntitiesException{}
     public void setChiffreAffaire (double p_chiffreAffaire) throws EntitiesException {

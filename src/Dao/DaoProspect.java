@@ -44,20 +44,11 @@ public class DaoProspect {
                         telephone, mail, commentaire, dateProspection, prospectInteresse);
                 prospects.add(prospect);
             }
-            //afficher chaque prospect dans une ligne
-            for (Prospect prospect : prospects) {
-                System.out.println(prospect);
-            }
-        } catch (SQLException e) {
+        } catch (SQLException | EntitiesException e) {
             throw new SQLException("Erreur pour voir la base de donnée");
-        } catch (EntitiesException e) {
-            throw new RuntimeException(e);
         } finally {
             if (statement != null) {
                 statement.close();
-            }
-            if (con != null) {
-                con.close();
             }
         }
         return prospects;
@@ -96,20 +87,14 @@ public class DaoProspect {
                         telephone, mail, commentaire, dateProspection, prospectInteresse);
                 prospects.add(prospect);
             }
-            //afficher chaque prospect dans une ligne
-            for (Prospect prospect : prospects) {
-                System.out.println(prospect);
-            }
-        } catch (EntitiesException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            System.out.println("sql problem :" + e.getMessage());
+
+        } catch (SQLException | EntitiesException e) {
             throw new SQLException("Erreur pour voir la base de donnée");
         }
         return prospects;
     }
 
-    //Methode pour creat un prospect
+    //Methode pour create un prospect
     public static void creatProspect(Prospect prospect) throws SQLException, IOException {
         PreparedStatement creatProspect = null;
         String sql = """
@@ -162,7 +147,6 @@ public class DaoProspect {
             }
             if (con != null) {
                 con.setAutoCommit(true);
-                con.close();
             }
         }
     }
@@ -219,7 +203,6 @@ public class DaoProspect {
             }
             if (con != null) {
                 con.setAutoCommit(true);
-                con.close();
             }
         }
     }
@@ -260,7 +243,6 @@ public class DaoProspect {
             }
             if (con != null){
                 con.setAutoCommit(true);
-                con.close();
             }
         }
     }

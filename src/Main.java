@@ -4,18 +4,23 @@ import Dao.DaoProspect;
 import entites.Client;
 import entites.EntitiesException;
 import entites.Prospect;
+import logs.FormatterLog;
 import logs.MyLogger;
 import outils.DateFormatter;
 import outils.EnumProspectInteresse;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
-    private static final Logger LOGGER = MyLogger.LOGGER; // Logger instance
+    private static final Logger LOGGER = MyLogger.LOGGER;// Logger instance
+    private static FileHandler fh = null;
     public static void main(String[] args) throws EntitiesException, DaoException, SQLException, IOException {
         //test class metier prospect + date pour la vue
         /*  String date = "25/12/2024";//rentrez votre date "formulaire"
@@ -27,14 +32,24 @@ public class Main {
             System.out.println(younes);
         }*/
 
-        //test class metier client
+        //test class metier client avec les log
         /*try {
-            Client younes = new Client(5, "uni", "5", "mdj", "54000", "V", "5555555555",
+            Client younes = new Client(5, "uni2", "5", "mdj",
+                    "54000", "V", "5555555555",
                     "fd@gmail.com", "ok", 250.15, 15);
-            LOGGER.log(Level.INFO, "Client created: {0}", younes);
+            DaoClient.creatClient(younes);
+            fh = new FileHandler("logReverso.log", true);
+            LOGGER.setUseParentHandlers(false);
+            fh.setFormatter(new FormatterLog());
+            LOGGER.log(Level.INFO, "Debut main");
 
-        } catch (EntitiesException e) {
-            LOGGER.log(Level.SEVERE, "Error occurred: {0}", e.getMessage());// template for logger to put it in vues
+        } catch (IOException | SecurityException fe) {
+            System.out.println("message d'erreur fichier  "+ fe.getMessage() + " " + fe);
+            LOGGER.log(Level.SEVERE, "Erreur fichier: ", fe.getMessage()+" "+fe);
+        }
+        catch (EntitiesException e) {
+            System.out.println("message de l'exception  "+ e.getMessage() + " " + e);
+            LOGGER.log(Level.SEVERE, "message de la classe Exception  "+ e.getMessage() + " " + e);
         }*/
 
 
@@ -42,8 +57,9 @@ public class Main {
         /*try{
             DaoClient.findAllClient();
         }catch (SQLException | IOException e){
-            throw new DaoException("DAO Problem :"+e.getMessage());
-        }*/
+            throw new DaoException(e.getMessage());
+        }
+        JOptionPane.showMessageDialog(null,DaoClient.findAllClient().toArray());*/
 
         //test findAllProspects
         /*try{
@@ -56,7 +72,7 @@ public class Main {
         /*try {
             DaoClient.findByNameClient("uni");
         } catch (SQLException | IOException e) {
-            throw new DaoException("DAO Problem :" + e.getMessage());
+            throw new DaoException(e.getMessage());
         }*/
 
         //test findByNameProspect

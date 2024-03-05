@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -19,6 +20,9 @@ public class Connexion {
         File fichier = new File("databaseClientProspect.properties");
         try (FileInputStream input = new FileInputStream(fichier)){
             dataProperties.load(input);
+        }catch (IOException e) {
+            MyLogger.LOGGER.log(Level.SEVERE, "Erreur lors de la lecture du fichier de propriétés", e);
+            throw e;
         }
         String url = dataProperties.getProperty("url");
         String username = dataProperties.getProperty("username");
@@ -27,7 +31,7 @@ public class Connexion {
         connection = DriverManager.getConnection(url,username,password);
     }
 //methode pour obtenir la connexion a la base de donnees
-    public static Connection getConnection() throws SQLException, IOException{
+    public static Connection getConnection() throws SQLException, IOException {
         if (connection == null){
             startConnection();
         }
@@ -48,14 +52,4 @@ public class Connexion {
             }
         });
 }
-//initialisation static
-    static {
-        try {
-            startConnection();
-        } catch (IOException | SQLException e) {
-            System.err.println("Erreur lors de l'initialisation de la connexion : " + e.getMessage());
-            // En cas d'erreur lors de l'initialisation, mieux vaut ne pas laisser une connexion non initialisée
-            // Nous allons juste imprimer l'erreur, la connexion restera null
-        }
-    }
 }

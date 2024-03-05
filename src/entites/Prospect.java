@@ -28,7 +28,6 @@ public class Prospect extends Societe{
         super(idSociete, raisonSociale, numRue, nomRue, cdPostal, ville, telephone, mail, commentaire);
         setDateProspection(p_dateProspection);
         setProspectInteresse(p_prospectInteresse);
-        ListProspects.getProspectsList().add(this);
     }
     //utilisation dans test
     public Prospect(){}

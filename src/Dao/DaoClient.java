@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class DaoClient {
     //Methode pour recuperer la liste complete des clients avec tous les champs
-    public static ArrayList<Client> findAllClient() throws SQLException, IOException{
+    public static ArrayList<Client> findAllClient() throws SQLException, EntitiesException, IOException {
         Statement statement = null;
         String sql = "SELECT * FROM CLIENT";
         ArrayList<Client> clients = new ArrayList<>();
@@ -42,19 +42,12 @@ public class DaoClient {
                         telephone,mail,commentaire,chiffreAffaire,nbrEmployes);
                 clients.add(client);
             }
-             for (Client client : clients) {
-                System.out.println(client);}
 
-        } catch (SQLException e){
-            throw new SQLException("Erreur pour voir la base de donnée");
-        } catch (EntitiesException e) {
-            throw new RuntimeException(e);
+        } catch (EntitiesException e){
+            throw new EntitiesException ("Erreur pour voir la base de donnée");
         } finally {
             if (statement != null) {
                 statement.close();
-            }
-            if (con !=null){
-                con.close();
             }
         }
     return clients;
@@ -89,21 +82,16 @@ public class DaoClient {
                         telephone,mail,commentaire,chiffreAffaire,nbrEmployes);
                 clients.add(client);
             }
-            for (Client client : clients) {
-                System.out.println(client);}
-        }catch (SQLException e){
-            System.out.println("hint "+e.getMessage());
+
+        }catch (SQLException |EntitiesException e){
             throw new SQLException("Erreur pour voir la base de donnée");
-        } catch (EntitiesException e) {
-            throw new RuntimeException(e);
         } finally {
             if (findByNameClient !=null){findByNameClient.close();}
-            if(con!=null){con.close();}
         }
     return clients;
     }
 
-    //Methode pour creat un client
+    //Methode pour create un client
     public static void creatClient (Client client)throws SQLException, IOException{
         PreparedStatement creatClient = null;
         String sql = "INSERT INTO client (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`, \n" +
@@ -149,12 +137,10 @@ public class DaoClient {
                 }
             }
             throw new SQLException ("Insert problem: "+ex.getMessage());
-            // Close resources and restore auto-commit mode
             }finally {
             if (creatClient !=null){creatClient.close();}
             //This ensures that we don't try to call setAutoCommit(true) on a null object.
             con.setAutoCommit(true);
-            con.close();
         }
     }
 
@@ -206,7 +192,6 @@ public class DaoClient {
             }
             if (con != null){
                 con.setAutoCommit(true);
-                con.close();
             }
         }
     }
@@ -247,7 +232,6 @@ public class DaoClient {
             }
             if (con != null){
                 con.setAutoCommit(true);
-                con.close();
             }
         }
     }

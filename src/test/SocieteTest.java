@@ -25,4 +25,20 @@ class SocieteTest extends Societe {
     void testSetNumRue(String numRueTest) {
         assertDoesNotThrow(()->{setNumRue(numRueTest);});
     }
+
+    @ParameterizedTest
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {"", "mail", "email.com", "email@com", "email@com.'123"})
+    void testInvalidSetMail(String mailTest) {
+        assertThrows(EntitiesException.class,()->{setMail(mailTest);});
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"validemail123@example.com"})
+    void testSetMail(String numRueTest) {
+        assertDoesNotThrow(()->{setNumRue(numRueTest);});
+    }
+
+
 }

@@ -20,7 +20,7 @@ public abstract class Societe {
     private String ville;
     private String telephone;
     private String mail;
-    private final Pattern regexEmail = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    static private final Pattern REGRX_MAIL = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     private String commentaire;
 
     public Societe(int idSociete, String raisonSociale,
@@ -50,8 +50,10 @@ public abstract class Societe {
     public int getId() {
         return idSociete;
     }
-    public void setRaisonSociale(String p_raisonSocial) {
+    public void setRaisonSociale(String p_raisonSocial) throws EntitiesException {
+        if (p_raisonSocial != null && !p_raisonSocial.isEmpty()){
         raisonSociale = p_raisonSocial;
+        }else throw new EntitiesException("Champs obligatoir ");
     }
     public String getRaisonSociale() {
         return raisonSociale;
@@ -99,7 +101,7 @@ public abstract class Societe {
         return telephone;
     }
     public void setMail(String p_mail) throws EntitiesException {
-        if (p_mail !=null && regexEmail.matcher(p_mail).matches()) {
+        if (p_mail !=null && REGRX_MAIL.matcher(p_mail).matches()) {
             mail = p_mail;
         } else {
             throw new EntitiesException("Email invalide ou manquant");
