@@ -2,12 +2,12 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vues.Accueil">
   <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="48" y="54" width="647" height="426"/>
+      <xy x="48" y="54" width="712" height="426"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="b2449" binding="pnlBtns" layout-manager="FlowLayout" hgap="0" vgap="5" flow-align="0">
+      <grid id="b2449" binding="pnlBtns" layout-manager="FlowLayout" hgap="5" vgap="10" flow-align="1">
         <constraints border-constraint="South"/>
         <properties/>
         <border type="none"/>
@@ -15,19 +15,22 @@
           <component id="bb841" class="javax.swing.JButton" binding="btnAfficheList">
             <constraints/>
             <properties>
-              <text value="Afficher list"/>
+              <text value="Afficher liste"/>
             </properties>
           </component>
-          <hspacer id="9c644">
+          <hspacer id="d7d9f">
             <constraints/>
           </hspacer>
-          <hspacer id="4a5cc">
+          <hspacer id="c0dca">
             <constraints/>
           </hspacer>
-          <hspacer id="2af55">
+          <hspacer id="e4263">
             <constraints/>
           </hspacer>
-          <hspacer id="d1232">
+          <hspacer id="6cb69">
+            <constraints/>
+          </hspacer>
+          <hspacer id="6d989">
             <constraints/>
           </hspacer>
           <component id="a78d2" class="javax.swing.JButton" binding="btnCreat">
@@ -39,10 +42,13 @@
               <verticalAlignment value="0"/>
             </properties>
           </component>
-          <hspacer id="8c1d0">
+          <hspacer id="67f33">
             <constraints/>
           </hspacer>
-          <hspacer id="8bf51">
+          <hspacer id="77f19">
+            <constraints/>
+          </hspacer>
+          <hspacer id="c1ab3">
             <constraints/>
           </hspacer>
           <component id="7e857" class="javax.swing.JButton" binding="btn">
@@ -51,19 +57,22 @@
               <text value="Modifier"/>
             </properties>
           </component>
+          <hspacer id="98f6f">
+            <constraints/>
+          </hspacer>
           <component id="3bdcd" class="javax.swing.JButton" binding="btnDelete">
             <constraints/>
             <properties>
               <text value="Supprimer"/>
             </properties>
           </component>
-          <hspacer id="9ea83">
+          <hspacer id="1f58e">
             <constraints/>
           </hspacer>
-          <hspacer id="27c40">
+          <hspacer id="42384">
             <constraints/>
           </hspacer>
-          <hspacer id="14553">
+          <hspacer id="292ef">
             <constraints/>
           </hspacer>
           <component id="a0929" class="javax.swing.JButton" binding="btnQuit">
@@ -187,14 +196,23 @@
               </vspacer>
               <component id="15c7e" class="javax.swing.JCheckBox" binding="chkBxClients">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
+                  <alignmentY value="0.5"/>
+                  <autoscrolls value="false"/>
                   <background color="-1315861"/>
+                  <borderPaintedFlat value="false"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
+                  <iconTextGap value="10"/>
+                  <margin top="2" left="2" bottom="2" right="2"/>
+                  <maximumSize width="18" height="18"/>
+                  <preferredSize width="18" height="18"/>
+                  <selected value="false"/>
                   <text value=""/>
+                  <visible value="true"/>
                 </properties>
               </component>
               <hspacer id="53656">

@@ -1,21 +1,12 @@
-import Dao.DaoClient;
+import Controlleur.ContAccueil;
 import Dao.DaoException;
-import Dao.DaoProspect;
-import entites.Client;
+import Vues.Accueil;
 import entites.EntitiesException;
-import entites.Prospect;
-import logs.FormatterLog;
 import logs.MyLogger;
-import outils.DateFormatter;
-import outils.EnumProspectInteresse;
 
-import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
@@ -154,6 +145,8 @@ public class Main {
         }catch (SQLException | IOException e) {
             throw new DaoException("DaoClient probleme:  "+e.getMessage());
         }*/
+        //Accueil accueil = new Accueil();
+        ContAccueil.initAccueil();
     }
 }
 
