@@ -54,10 +54,9 @@ public class DaoClient {
     }
 
     //Methode pour recuperer 1 client selon la raison social avec tous les champs du client
-    public static ArrayList<Client> findByNameClient(String filterRaisonSocial) throws SQLException, IOException {
+    public static Client findByNameClient(String filterRaisonSocial) throws SQLException, IOException, DaoException {
         PreparedStatement findByNameClient = null;
         String sql = "SELECT * FROM client WHERE RAISONSOCIAL = ?";
-        ArrayList<Client> clients = new ArrayList<>();
 
         Connection con = Connexion.getConnection();
         try {
@@ -65,7 +64,7 @@ public class DaoClient {
             findByNameClient.setString(1, filterRaisonSocial);
             ResultSet rs = findByNameClient.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 int idClient = rs.getInt("IDCLIENT");
                 String raisonSocial = rs.getString("RAISONSOCIAL");
                 String numRue = rs.getString("NUMRUE");
@@ -80,15 +79,14 @@ public class DaoClient {
 
                 Client client = new Client(idClient,raisonSocial,numRue,nomRue,cdPostal,ville,
                         telephone,mail,commentaire,chiffreAffaire,nbrEmployes);
-                clients.add(client);
-            }
+                return client;
+            }else throw new DaoException("find by name impossible");
 
         }catch (SQLException |EntitiesException e){
             throw new SQLException("Erreur pour voir la base de donnée");
         } finally {
             if (findByNameClient !=null){findByNameClient.close();}
         }
-    return clients;
     }
 
     //Methode pour create un client

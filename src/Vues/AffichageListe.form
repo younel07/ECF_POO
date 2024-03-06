@@ -102,10 +102,6 @@
               </component>
             </children>
           </grid>
-          <component id="a244e" class="javax.swing.JTable" binding="bddList">
-            <constraints border-constraint="Center"/>
-            <properties/>
-          </component>
           <hspacer id="e754">
             <constraints border-constraint="West"/>
           </hspacer>
@@ -115,6 +111,17 @@
           <vspacer id="4d039">
             <constraints border-constraint="South"/>
           </vspacer>
+          <scrollpane id="15d6e" binding="scrlTable">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a244e" class="javax.swing.JTable" binding="bddList">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
     </children>

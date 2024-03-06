@@ -51,7 +51,7 @@
           <hspacer id="c1ab3">
             <constraints/>
           </hspacer>
-          <component id="7e857" class="javax.swing.JButton" binding="btn">
+          <component id="7e857" class="javax.swing.JButton" binding="btnAlter">
             <constraints/>
             <properties>
               <text value="Modifier"/>

@@ -55,10 +55,9 @@ public class DaoProspect {
     }
 
     //Methode pour recuperer 1 Prospect selon la raison social avec tous les champs du prospect
-    public static ArrayList<Prospect> findByNameProspect(String filtreRaisonSocial) throws SQLException, IOException {
+    public static Prospect findByNameProspect(String filtreRaisonSocial) throws SQLException, IOException, DaoException {
         PreparedStatement findByNameProspect = null;
         String sql = "SELECT * FROM prospect WHERE RAISONSOCIAL = ?";
-        ArrayList<Prospect> prospects = new ArrayList<>();
 
         Connection con = Connexion.getConnection();
         try {
@@ -66,7 +65,7 @@ public class DaoProspect {
             findByNameProspect.setString(1, filtreRaisonSocial);
             ResultSet rs = findByNameProspect.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 int idProspect = rs.getInt("IDPROSPECT");
                 String raisonSocial = rs.getString("RAISONSOCIAL");
                 String numRue = rs.getString("NUMRUE");
@@ -82,16 +81,14 @@ public class DaoProspect {
 
                 String prospectOuiNon = rs.getString("PROSPECTINTERESSE");
                 EnumProspectInteresse prospectInteresse = EnumProspectInteresse.valueOf(prospectOuiNon);
-
-                Prospect prospect = new Prospect(idProspect, raisonSocial, numRue, nomRue, cdPostal, ville,
+                return  new Prospect(idProspect, raisonSocial, numRue, nomRue, cdPostal, ville,
                         telephone, mail, commentaire, dateProspection, prospectInteresse);
-                prospects.add(prospect);
-            }
 
+            } else throw new DaoException("find by name impossible");
         } catch (SQLException | EntitiesException e) {
             throw new SQLException("Erreur pour voir la base de donnée");
         }
-        return prospects;
+
     }
 
     //Methode pour create un prospect
