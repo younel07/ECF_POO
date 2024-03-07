@@ -13,6 +13,10 @@ public class Main {
     private static final Logger LOGGER = MyLogger.LOGGER;// Logger instance
     private static FileHandler fh = null;
     public static void main(String[] args) throws EntitiesException, DaoException, SQLException, IOException {
+
+        //lancement du programme
+        ContAccueil.initAccueil();
+
         //test class metier prospect + date pour la vue
         /*  String date = "25/12/2024";//rentrez votre date "formulaire"
         if (DateFormatter.dateValid(date))
@@ -145,8 +149,8 @@ public class Main {
         }catch (SQLException | IOException e) {
             throw new DaoException("DaoClient probleme:  "+e.getMessage());
         }*/
-        //Accueil accueil = new Accueil();
-        ContAccueil.initAccueil();
+
+
     }
 }
 

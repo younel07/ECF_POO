@@ -1,6 +1,7 @@
 package Controlleur;
 
 import Dao.DaoClient;
+import Dao.DaoException;
 import Dao.DaoProspect;
 import Vues.Accueil;
 import entites.Client;
@@ -32,7 +33,7 @@ public class ContAccueil {
     public static void findByNameClient (String filtreRaisonSocial) throws Exception{
         clientSelectionne = DaoClient.findByNameClient(filtreRaisonSocial);
     }
-    public static ArrayList<Client> mettreListClient () throws Exception {
+    public static ArrayList<Client> mettreListClient () throws DaoException, SQLException, IOException, EntitiesException {
         return DaoClient.findAllClient();
     }
     public static ArrayList<Prospect> mettreListProspect () throws Exception{
@@ -40,8 +41,11 @@ public class ContAccueil {
     }
     public static void lblOperationManager (int operationLbl ){
         switch (operationLbl){
+            //suppression
             case 1:operation = 1; break;
+            //modification
             case 2:operation = 2; break;
+            //creation
             default: operation = 3;
         }
     }

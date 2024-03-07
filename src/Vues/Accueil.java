@@ -3,7 +3,9 @@ package Vues;
 import Controlleur.ContAccueil;
 import Controlleur.ContAffichList;
 import Controlleur.ContGestion;
+import Dao.DaoException;
 import entites.Client;
+import entites.EntitiesException;
 import entites.Prospect;
 
 import javax.swing.*;
@@ -11,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Accueil extends JDialog {
@@ -35,6 +39,7 @@ public class Accueil extends JDialog {
     private JButton buttonOK;
     private static boolean isProspectSelected;
     private static boolean isClientSelected;
+    private String selectionEntite;
 
     public Accueil() {
         setTitle("Accueil");
@@ -78,6 +83,37 @@ public class Accueil extends JDialog {
                     }
                 } else if (!chkBxClients.isSelected()) {
                     comboBox1.removeAllItems();
+                }
+            }
+        });
+    }
+    //selectionner par la sourie une entité a modifier ou a supprimer
+    {
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                //je donne la valeur boolean au check box souhaité
+                isClientSelected = chkBxClients.isSelected();
+                isProspectSelected = chkBxProspect.isSelected();
+
+                if (isProspectSelected) {
+                    selectionEntite = String.valueOf(comboBox1.getSelectedItem());
+                    try {
+                        ContAccueil.findByNameProspect(selectionEntite);
+                        JOptionPane.showMessageDialog(null, "Vous avez choisi le prospect:\n "
+                                + selectionEntite);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+                } else if (isClientSelected) {
+                    selectionEntite = String.valueOf(comboBox1.getSelectedItem());
+                    try {
+                        ContAccueil.findByNameClient(selectionEntite);
+                        JOptionPane.showMessageDialog(null, "Vous avez choisi le client:\n "
+                                + selectionEntite);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
                 }
             }
         });
@@ -133,20 +169,21 @@ public class Accueil extends JDialog {
         btnAlter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+
                     if (!chkBxClients.isSelected() && !chkBxProspect.isSelected()) {
-                        throw new Exception("Sélectionnez client ou prospect pour modifier un nouveau.");
-                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Sélectionnez client ou prospect pour modifier ces cordonnées.",
+                                "Modifier entreprise", JOptionPane.WARNING_MESSAGE);
+                    } else if (!(selectionEntite == null)) {
                         Accueil.this.dispose();
                         isClientSelected = chkBxClients.isSelected();
                         isProspectSelected = chkBxProspect.isSelected();
                         ContAccueil.lblOperationManager(2);
                         ContAccueil.launchGestion(isClientSelected, isProspectSelected);
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(),
-                            "Modification entité", JOptionPane.WARNING_MESSAGE);
-                }
+                    } else JOptionPane.showMessageDialog(null,
+                            "Vous devez choisir une entreprise pour modifier ces cordonnées",
+                            "Modifier entreprise", JOptionPane.WARNING_MESSAGE);
+
             }
         });
     }
@@ -156,20 +193,19 @@ public class Accueil extends JDialog {
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
                     if (!chkBxClients.isSelected() && !chkBxProspect.isSelected()) {
-                        throw new Exception("Sélectionnez client ou prospect pour le supprimer.");
-                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Sélectionnez client ou prospect pour supprimer ces cordonnées.",
+                                "Supprimer entreprise", JOptionPane.WARNING_MESSAGE);
+                    } else if (!(selectionEntite == null)) {
                         Accueil.this.dispose();
                         isClientSelected = chkBxClients.isSelected();
                         isProspectSelected = chkBxProspect.isSelected();
                         ContAccueil.lblOperationManager(1);
                         ContAccueil.launchGestion(isClientSelected, isProspectSelected);
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(),
-                            "Suppression entité", JOptionPane.WARNING_MESSAGE);
-                }
+                    } else JOptionPane.showMessageDialog(null,
+                            "Vous devez choisir une entreprise pour supprimer ces cordonnées.",
+                            "Supprimer entreprise", JOptionPane.WARNING_MESSAGE);
             }
         });
     }
@@ -195,8 +231,12 @@ public class Accueil extends JDialog {
                 model.addElement(client.getRaisonSociale());
             }
             comboBox1.setModel(model);
-        } catch (Exception e) {
+        } catch (DaoException | EntitiesException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Connexion échoué");
+        } catch (IOException e) {
+            System.out.println("io"+e.getMessage());
         }
     }
 
@@ -209,42 +249,16 @@ public class Accueil extends JDialog {
                 model.addElement(prospect.getRaisonSociale());
             }
             comboBox1.setModel(model);
-        } catch (Exception e) {
+        } catch (DaoException | EntitiesException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Connexion échoué");
+        } catch (Exception e) {
+            System.out.println("io"+e.getMessage());
         }
     }
 
-    //selectionner par la sourie une entité a modifier ou supprimer
-    {
-        comboBox1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed (ActionEvent e){
-                //je donne la valeur boolean au check box souhaité
-                isClientSelected = chkBxClients.isSelected();
-                isProspectSelected = chkBxProspect.isSelected();
 
-                if (isProspectSelected) {
-                    String selection = String.valueOf(comboBox1.getSelectedItem());
-                    try {
-                        ContAccueil.findByNameProspect(selection);
-                        JOptionPane.showMessageDialog(null, "Vous avez choisi le prospect:\n "
-                                + selection);
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage());
-                    }
-                } else if (isClientSelected) {
-                    String selection2 = String.valueOf(comboBox1.getSelectedItem());
-                    try {
-                        ContAccueil.findByNameClient(selection2);
-                        JOptionPane.showMessageDialog(null, "Vous avez choisi le client:\n "
-                                + selection2);
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage());
-                    }
-                }
-            }
-        });
-    }
 
 
 

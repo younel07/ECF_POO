@@ -46,7 +46,7 @@ public class AffichageListe extends JDialog {
     private void remplirBddClient (){
         try {
             ArrayList<Client> clients = ContAffichList.mettreListClient();
-            Object[][] tableau = new Object[clients.size()][11];
+            Object[][] tableau = new Object[clients.size()][10];
             for (int i = 0; i< clients.size(); i++){
                 Client client = clients.get(i);
                 tableau[i][0] = client.getId();
@@ -57,12 +57,11 @@ public class AffichageListe extends JDialog {
                 tableau[i][5] = client.getVille();
                 tableau[i][6] = client.getTelephone();
                 tableau[i][7] = client.getMail();
-                tableau[i][8] = client.getCommentaire();
-                tableau[i][9] = client.getChiffreAffaire();
-                tableau[i][10] = client.getNbrEmploye();
+                tableau[i][8] = client.getChiffreAffaire();
+                tableau[i][9] = client.getNbrEmploye();
             }
             String [] columsName ={"ID","Raison Social","N° Rue","Nom Rue","Code Postal","Ville","Téléphone","Email"
-                                    ,"Commentaire","Chiffre d'affaire", "Nombre d'emplpyes"};
+                                    ,"Chiffre d'affaire", "Nombre d'emplpyes"};
             DefaultTableModel model = new DefaultTableModel(tableau, columsName);
             bddList.setModel(model);
             scrlTable.setViewportView(bddList);
@@ -89,12 +88,11 @@ public class AffichageListe extends JDialog {
                 tableau[i][5] = prospect.getVille();
                 tableau[i][6] = prospect.getTelephone();
                 tableau[i][7] = prospect.getMail();
-                tableau[i][8] = prospect.getCommentaire();
-                tableau[i][9] = prospect.getDateProspection();
-                tableau[i][10] = prospect.getProspectInteresse();
+                tableau[i][8] = prospect.getDateProspection();
+                tableau[i][9] = prospect.getProspectInteresse();
             }
             String [] columsName ={"ID","Raison Social","N° Rue","Nom Rue","Code Postal","Ville","Téléphone","Email"
-                    ,"Commentaire","Date prospection", "Prospect interessé"};
+                    ,"Date prospection", "Prospect interessé"};
             DefaultTableModel model = new DefaultTableModel(tableau, columsName);
             bddList.setModel(model);
             scrlTable.setViewportView(bddList);

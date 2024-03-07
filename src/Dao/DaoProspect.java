@@ -13,12 +13,14 @@ import java.util.Locale;
 
 public class DaoProspect {
     //Methode pour recuperer la liste complete des Prospects avec tous les champs
-    public static ArrayList<Prospect> findAllProspects() throws SQLException, IOException {
+    public static ArrayList<Prospect> findAllProspects() throws SQLException, IOException, DaoException {
         Statement statement = null;
-        String sql = "SELECT * FROM PROSPECT";
+        String sql = "SELECT * FROM PROSPECT ORDER BY RAISONSOCIAL ASC";
         ArrayList<Prospect> prospects = new ArrayList<>();
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+
         try {
             statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -60,6 +62,8 @@ public class DaoProspect {
         String sql = "SELECT * FROM prospect WHERE RAISONSOCIAL = ?";
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+
         try {
             findByNameProspect = con.prepareStatement(sql);
             findByNameProspect.setString(1, filtreRaisonSocial);
@@ -92,7 +96,7 @@ public class DaoProspect {
     }
 
     //Methode pour create un prospect
-    public static void creatProspect(Prospect prospect) throws SQLException, IOException {
+    public static void creatProspect(Prospect prospect) throws SQLException, IOException, DaoException {
         PreparedStatement creatProspect = null;
         String sql = """
             INSERT INTO prospect (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`, 
@@ -100,6 +104,7 @@ public class DaoProspect {
             VALUES (?,?,?,?,?,?,?,?,?,?);""";
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try {
             con.setAutoCommit(false);
@@ -149,7 +154,7 @@ public class DaoProspect {
     }
 
     //Methode pour update un prospect
-    public static void updateProspect(Prospect prospect) throws SQLException, IOException {
+    public static void updateProspect(Prospect prospect) throws SQLException, IOException, DaoException {
         PreparedStatement updateProspect = null;
         String sql = """
             UPDATE prospect SET RAISONSOCIAL=?, NUMRUE=?, NOMRUE=?, CDPOSTAL=?, VILLE=? , 
@@ -157,6 +162,7 @@ public class DaoProspect {
             """;
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try {
             con.setAutoCommit(false);
@@ -205,10 +211,11 @@ public class DaoProspect {
     }
 
     //Methode pour delete un prospect
-    public static void deletProspect (int idProspect) throws SQLException, IOException{
+    public static void deletProspect (int idProspect) throws SQLException, IOException, DaoException {
         PreparedStatement deletProspect = null;
         String sql = "DELETE FROM prospect WHERE IDPROSPECT = ?";
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try{
             con.setAutoCommit(false);

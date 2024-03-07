@@ -15,12 +15,13 @@ import java.util.ArrayList;
  */
 public class DaoClient {
     //Methode pour recuperer la liste complete des clients avec tous les champs
-    public static ArrayList<Client> findAllClient() throws SQLException, EntitiesException, IOException {
+    public static ArrayList<Client> findAllClient() throws SQLException, EntitiesException, IOException, DaoException {
         Statement statement = null;
-        String sql = "SELECT * FROM CLIENT";
+        String sql = "SELECT * FROM CLIENT ORDER BY RAISONSOCIAL ASC";
         ArrayList<Client> clients = new ArrayList<>();
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
         try {
             statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -44,7 +45,7 @@ public class DaoClient {
             }
 
         } catch (EntitiesException e){
-            throw new EntitiesException ("Erreur pour voir la base de donnée");
+            throw new EntitiesException ("Erreur pour instencier le client");
         } finally {
             if (statement != null) {
                 statement.close();
@@ -59,6 +60,7 @@ public class DaoClient {
         String sql = "SELECT * FROM client WHERE RAISONSOCIAL = ?";
 
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
         try {
             findByNameClient = con.prepareStatement(sql);
             findByNameClient.setString(1, filterRaisonSocial);
@@ -83,19 +85,20 @@ public class DaoClient {
             }else throw new DaoException("find by name impossible");
 
         }catch (SQLException |EntitiesException e){
-            throw new SQLException("Erreur pour voir la base de donnée");
+            throw new SQLException("Erreur pour instencier le client");
         } finally {
             if (findByNameClient !=null){findByNameClient.close();}
         }
     }
 
     //Methode pour create un client
-    public static void creatClient (Client client)throws SQLException, IOException{
+    public static void creatClient (Client client) throws SQLException, IOException, DaoException {
         PreparedStatement creatClient = null;
         String sql = "INSERT INTO client (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`, \n" +
                 "`TELEPHONE`, `MAIL`, `COMMENTAIRES`, `CHIFFREAFFAIRES`, `NBREMPLOYES`) \n" +
                 "VALUES (?,?,?,?,?,?,?,?,?,?);";
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try {
             con.setAutoCommit(false);// debut de transaction (false to enable the rollback and commit)
@@ -143,11 +146,12 @@ public class DaoClient {
     }
 
     //Methode pour update un client
-    public static void updateClient (Client client) throws SQLException, IOException{
+    public static void updateClient (Client client) throws SQLException, IOException, DaoException {
         PreparedStatement updateClient = null;
         String sql = "UPDATE client SET RAISONSOCIAL=?, NUMRUE=?, NOMRUE=?, CDPOSTAL=?, VILLE=?, " +
                 "TELEPHONE=?, MAIL=?, COMMENTAIRES=?, CHIFFREAFFAIRES=?, NBREMPLOYES=? WHERE IDCLIENT=?";
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try {
             con.setAutoCommit(false);// Begin transaction (false to enable the rollback and commit)
@@ -168,9 +172,9 @@ public class DaoClient {
             int rowsAffected = updateClient.executeUpdate();
 
             if (rowsAffected > 0){
-                System.out.println("Client met a jour.");
+                System.out.println("Client met a jour.");//changer en exception
             }else {
-                System.out.println("Aucun client n'est mis a jour.");
+            System.out.println("Aucun client n'est mis a jour.");//changer en exception
             }
 
             con.commit();
@@ -195,10 +199,11 @@ public class DaoClient {
     }
 
     //Methode pour delete un client
-    public static void deletClient (int idClient) throws SQLException, IOException{
+    public static void deletClient (int idClient) throws SQLException, IOException, DaoException {
         PreparedStatement deletClient = null;
         String sql = "DELETE FROM client WHERE IDCLIENT = ?";
         Connection con = Connexion.getConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
 
         try{
             con.setAutoCommit(false);

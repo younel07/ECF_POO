@@ -31,9 +31,12 @@ public class Connexion {
         connection = DriverManager.getConnection(url,username,password);
     }
 //methode pour obtenir la connexion a la base de donnees
-    public static Connection getConnection() throws SQLException, IOException {
+    public static Connection getConnection() throws SQLException, IOException, DaoException {
         if (connection == null){
             startConnection();
+            if (connection==null){
+                throw new DaoException("connexion nul");
+            }
         }
         return connection;
     }
