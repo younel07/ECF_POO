@@ -195,18 +195,20 @@ public class Gestion  extends JDialog {
             if (isClientSelected && ContGestion.lblOperationManager()==3){
                 try
                 {
+                    //si aucun des champs ne sont remplient
                     if (
-                            txtCA.getText().isEmpty() ||
-                            txtNumRue.getText().isEmpty() ||
-                            txtNomRue.getText().isEmpty() ||
-                            txtCdPostale.getText().isEmpty() ||
-                            txtVille.getText().isEmpty() ||
-                            txtTelephone.getText().isEmpty() ||
-                            txtMail.getText().isEmpty() ||
-                            txtCA.getText().isEmpty() ||
+                            txtRS.getText().isEmpty() &&
+                            txtNumRue.getText().isEmpty() &&
+                            txtNomRue.getText().isEmpty() &&
+                            txtCdPostale.getText().isEmpty() &&
+                            txtVille.getText().isEmpty() &&
+                            txtTelephone.getText().isEmpty() &&
+                            txtMail.getText().isEmpty() &&
+                            txtCA.getText().isEmpty() &&
                             txtNbrEmploye.getText().isEmpty()
                     )
                     {JOptionPane.showMessageDialog(null, "Champs avec * sont obligatoirs");}
+
                     else {
                         int confirmation = JOptionPane.showConfirmDialog(null,
                                 "Confirmer la création du client", "Confirmation",
@@ -223,6 +225,7 @@ public class Gestion  extends JDialog {
                             int nbrEmployes = Integer.parseInt(txtNbrEmploye.getText());
                             String commentaire = txtCommentaire.getText();
 
+
                             ContGestion.inseretClient(raisonSocial, numRue, nomRue, cdPostal, ville, telephone, mail,
                                     chiffreAffaire, nbrEmployes, commentaire);
                             JOptionPane.showMessageDialog(null, "Client créer avec succé",
@@ -233,22 +236,25 @@ public class Gestion  extends JDialog {
                     }
                 } catch (SQLException | IOException | DaoException | EntitiesException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
+                }catch (NumberFormatException nfex)
+                {JOptionPane.showMessageDialog(null,
+                        "Le chiffre d'affaire ou le nombre d'employes est vide");}
             }
 
             //Creation de Prospect
             if (isProspectSelected && ContGestion.lblOperationManager()==3){
                 try
                 {
+                    //si aucun des champs ne sont remplient
                     if (
-                            txtCA.getText().isEmpty() ||
-                            txtNumRue.getText().isEmpty() ||
-                            txtNomRue.getText().isEmpty() ||
-                            txtCdPostale.getText().isEmpty() ||
-                            txtVille.getText().isEmpty() ||
-                            txtTelephone.getText().isEmpty() ||
-                            txtMail.getText().isEmpty() ||
-                            txtCA.getText().isEmpty() ||
+                            txtRS.getText().isEmpty() &&
+                            txtNumRue.getText().isEmpty() &&
+                            txtNomRue.getText().isEmpty() &&
+                            txtCdPostale.getText().isEmpty() &&
+                            txtVille.getText().isEmpty() &&
+                            txtTelephone.getText().isEmpty() &&
+                            txtMail.getText().isEmpty() &&
+                            txtCA.getText().isEmpty() &&
                             txtNbrEmploye.getText().isEmpty()
                     )
                     {JOptionPane.showMessageDialog(null, "Champs avec * sont obligatoirs");}
@@ -279,7 +285,9 @@ public class Gestion  extends JDialog {
                 } catch (SQLException | IOException | DaoException | EntitiesException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }catch (DateTimeParseException dte){
-                    JOptionPane.showMessageDialog(null, "Date n'est pas en bon format");
+                    JOptionPane.showMessageDialog(null, "Date doit etre jj/mm/aaaa");
+                }catch (IllegalArgumentException illEx){
+                    JOptionPane.showMessageDialog(null, "Prospect intersse doit etre oui ou non");
                 }
             }
 
@@ -289,14 +297,14 @@ public class Gestion  extends JDialog {
                 try
                 {
                     if (
-                            txtCA.getText().isEmpty() ||
-                            txtNumRue.getText().isEmpty() ||
-                            txtNomRue.getText().isEmpty() ||
-                            txtCdPostale.getText().isEmpty() ||
-                            txtVille.getText().isEmpty() ||
-                            txtTelephone.getText().isEmpty() ||
-                            txtMail.getText().isEmpty() ||
-                            txtCA.getText().isEmpty() ||
+                            txtRS.getText().isEmpty() &&
+                            txtNumRue.getText().isEmpty() &&
+                            txtNomRue.getText().isEmpty() &&
+                            txtCdPostale.getText().isEmpty() &&
+                            txtVille.getText().isEmpty() &&
+                            txtTelephone.getText().isEmpty() &&
+                            txtMail.getText().isEmpty() &&
+                            txtCA.getText().isEmpty() &&
                             txtNbrEmploye.getText().isEmpty()
                     )
                     {JOptionPane.showMessageDialog(null, "Champs avec * sont obligatoirs");}
@@ -325,24 +333,28 @@ public class Gestion  extends JDialog {
                             Gestion.this.dispose();
                         }
                     }
-                } catch (SQLException | IOException | DaoException | EntitiesException ex) {
+                } catch ( IOException | DaoException | EntitiesException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
+                } catch (SQLException sqEx){JOptionPane.showMessageDialog(null,
+                        "Cette raison social existe déja, veuillez la modifier");}
+                catch (NumberFormatException nfex)
+                {JOptionPane.showMessageDialog(null,
+                        "Le chiffre d'affaire ou le nombre d'employes est vide");}
             }
 
             //Modification de Prospect
-            if (isProspectSelected && ContGestion.lblOperationManager()==3){
+            if (isProspectSelected && ContGestion.lblOperationManager()==2){
                     try
                     {
                         if (
-                                txtCA.getText().isEmpty() ||
-                                txtNumRue.getText().isEmpty() ||
-                                txtNomRue.getText().isEmpty() ||
-                                txtCdPostale.getText().isEmpty() ||
-                                txtVille.getText().isEmpty() ||
-                                txtTelephone.getText().isEmpty() ||
-                                txtMail.getText().isEmpty() ||
-                                txtCA.getText().isEmpty() ||
+                                txtRS.getText().isEmpty() &&
+                                txtNumRue.getText().isEmpty() &&
+                                txtNomRue.getText().isEmpty() &&
+                                txtCdPostale.getText().isEmpty() &&
+                                txtVille.getText().isEmpty() &&
+                                txtTelephone.getText().isEmpty() &&
+                                txtMail.getText().isEmpty() &&
+                                txtCA.getText().isEmpty() &&
                                 txtNbrEmploye.getText().isEmpty()
                         )
                         {JOptionPane.showMessageDialog(null, "Champs avec * sont obligatoirs");}
@@ -371,10 +383,14 @@ public class Gestion  extends JDialog {
                                 Gestion.this.dispose();
                             }
                         }
-                    } catch (SQLException | IOException | DaoException | EntitiesException ex) {
+                    } catch ( IOException | DaoException | EntitiesException ex) {
                         JOptionPane.showMessageDialog(null, ex.getMessage());
-                    }catch (DateTimeParseException dte){
-                        JOptionPane.showMessageDialog(null, "Date n'est pas en bon format");
+                    } catch (SQLException sqEx){JOptionPane.showMessageDialog(null,
+                            "Cette raison social existe déja, veuillez la modifier");}
+                    catch (DateTimeParseException dte){
+                        JOptionPane.showMessageDialog(null, "Date doit etre jj/mm/aaaa");
+                    }catch (IllegalArgumentException illEx){
+                        JOptionPane.showMessageDialog(null, "Prospect intersse doit etre oui ou non");
                     }
                 }
 
@@ -394,10 +410,8 @@ public class Gestion  extends JDialog {
                         ContGestion.launchAccueil();
                         Gestion.this.dispose();
                     }
-                } catch (SQLException | IOException ex) {
+                } catch (SQLException | IOException | DaoException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
-                } catch (DaoException ex) {
-                    throw new RuntimeException(ex);// gere la
                 }
             }
             //Supression d'un Prospect
@@ -415,10 +429,8 @@ public class Gestion  extends JDialog {
                             ContGestion.launchAccueil();
                             Gestion.this.dispose();
                         }
-                    } catch (SQLException | IOException ex) {
+                    } catch (SQLException | IOException | DaoException ex) {
                         JOptionPane.showMessageDialog(null, ex.getMessage());
-                    } catch (DaoException ex) {
-                        throw new RuntimeException(ex);//gere la--------------------
                     }
             }
             }

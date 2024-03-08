@@ -27,7 +27,7 @@ public class Client extends Societe {
     }
     //public Client ()throws EntitiesException{}
     public void setChiffreAffaire (double p_chiffreAffaire) throws EntitiesException {
-        if (p_chiffreAffaire > 200) {
+        if (p_chiffreAffaire > 200 ) {
             chiffreAffaire = p_chiffreAffaire;
         } else {
             throw new EntitiesException("Le chiffre d'affaires doit être supérieur à 200");

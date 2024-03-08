@@ -51,41 +51,42 @@ public abstract class Societe {
         return idSociete;
     }
     public void setRaisonSociale(String p_raisonSocial) throws EntitiesException {
-        if (p_raisonSocial != null && !p_raisonSocial.isEmpty()){
+        if (p_raisonSocial != null && !p_raisonSocial.isEmpty() && p_raisonSocial.length() < 40){
         raisonSociale = p_raisonSocial;
-        }else throw new EntitiesException("Champs obligatoir ");
+        }else throw new EntitiesException("Raison social erroné ");
+
     }
     public String getRaisonSociale() {
         return raisonSociale;
     }
     public void setNumRue(String p_numRue) throws EntitiesException{
-        if (p_numRue != null && !p_numRue.isEmpty()){
+        if (p_numRue != null && !p_numRue.isEmpty() && p_numRue.length()< 10){
             numRue = p_numRue;
-        }else throw new EntitiesException("champ obligatoir ");
+        }else throw new EntitiesException("Numero de rue erroné ");
     }
     public String getNumRue() {
         return numRue;
     }
     public void setNomRue(String p_nomRue) throws EntitiesException {
-        if (p_nomRue != null && !p_nomRue.isEmpty()){
+        if (p_nomRue != null && !p_nomRue.isEmpty() ){
             nomRue = p_nomRue;
-        }else throw new EntitiesException("champ obligatoir ");;
+        }else throw new EntitiesException("Nom de la rue erroné ");;
     }
     public String getNomRue() {
         return nomRue;
     }
     public void setCdPostal(String p_cdPostal) throws EntitiesException {
-        if (p_cdPostal != null && !p_cdPostal.isEmpty()){
+        if (p_cdPostal != null && !p_cdPostal.isEmpty() ){
             cdPostal = p_cdPostal;
-        }else throw new EntitiesException("champ obligatoir ");
+        }else throw new EntitiesException("Code postal erroné ");
     }
     public String getCdPostal() {
         return cdPostal;
     }
     public void setVille(String p_ville) throws EntitiesException {
-        if (p_ville != null && !p_ville.isEmpty()){
+        if (p_ville != null && !p_ville.isEmpty() ){
             ville = p_ville;
-        }else throw new EntitiesException("champ obligatoir ");
+        }else throw new EntitiesException("Ville erroné ");
     }
     public String getVille() {
         return ville;
@@ -111,7 +112,9 @@ public abstract class Societe {
         return mail;
     }
     public void setCommentaire(String p_commentaire) {
+
         commentaire = p_commentaire;
+
     }
     public String getCommentaire() {
         return commentaire;
