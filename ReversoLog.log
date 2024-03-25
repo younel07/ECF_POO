@@ -1,0 +1,134 @@
+22/03/2024 08:56:10 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 08:56:10 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 08:56:15 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+22/03/2024 08:57:09 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 08:57:09 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 08:58:14 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 08:58:14 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 08:58:15 Level : SEVERE / Message : Erreur lors de la lecture du fichier de propriétés / Méthode : startConnection / Classe : Dao.Connexion
+22/03/2024 09:01:29 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 09:01:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 09:01:53 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:02:19 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:02:19 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:02:28 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:02:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:03:02 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:04:08 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'VILLE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:04:15 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'VILLE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:05:33 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:05:33 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:05:46 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:05:46 Level : SEVERE / Message : Erreur: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 10:08:21 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:08:21 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:08:33 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:08:38 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:09:29 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:09:30 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:09:44 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:12:54 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:12:55 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:13:10 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:13:20 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:14:10 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:14:10 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:14:23 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:14:29 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:55:19 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:55:19 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:55:29 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:55:44 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:55:45 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:55:58 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:55:58 Level : SEVERE / Message : Erreur: Range [2, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 10:57:20 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:57:20 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:57:41 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:57:41 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:57:55 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 10:57:55 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 10:57:57 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 10:59:45 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 10:59:45 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 10:59:59 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:00:15 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:00:54 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:00:55 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:01:07 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:01:07 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:01:09 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:02:25 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:02:26 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:02:36 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:02:36 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:03:27 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:03:28 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:03:37 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:03:37 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:05:02 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:05:03 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:05:16 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:05:16 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:05:18 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:11:41 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:11:42 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:11:55 Level : SEVERE / Message : Transaction update client rolled back, cause: Duplicate entry 'Bbb' for key 'UC_RAISSOCIAL' / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:12:11 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:12:11 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:12:17 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:13:58 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:13:59 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:14:15 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:14:15 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:14:17 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:14:59 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:15:00 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:15:14 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:15:14 Level : SEVERE / Message : Erreur: Data truncation: Data too long for column 'TELEPHONE' at row 1 erreur: 1406 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:15:14 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:15:14 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:20:13 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:20:13 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:20:24 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:20:24 Level : SEVERE / Message : Erreur: Data truncation: Data too long for column 'TELEPHONE' at row 1 erreur: 1406 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:20:24 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:23:44 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:23:45 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:23:54 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:23:59 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:24:10 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:24:11 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:24:26 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:24:26 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:25:18 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:25:19 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:25:29 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:25:29 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:25:37 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:26:09 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:26:09 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:26:19 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:26:19 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:26:21 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:26:44 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:26:45 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:26:53 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:26:53 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:26:55 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:27:32 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:27:33 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:27:40 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:27:40 Level : SEVERE / Message : Erreur: Range [40, -1) out of bounds for length 62boutton update client / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:30:01 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:30:02 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:30:12 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:30:12 Level : SEVERE / Message : Erreur: Range [43, -1) out of bounds for length 62 / Méthode : actionPerformed / Classe : Vues.Gestion$1
+22/03/2024 11:30:13 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+22/03/2024 11:31:03 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:31:04 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:31:14 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:32:04 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+22/03/2024 11:32:05 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+22/03/2024 11:32:14 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+22/03/2024 11:33:24 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'VILLE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient

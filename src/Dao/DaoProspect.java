@@ -1,25 +1,39 @@
 package Dao;
 
+import entites.Client;
 import entites.EntitiesException;
 import entites.Prospect;
+import logs.MyLogger;
 import outils.EnumProspectInteresse;
-import outils.ListProspects;
 
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Locale;
-
+import java.util.logging.Level;
+/**
+ * Cette classe fournit les méthodes d'accès aux données pour les objets de type Prospect.
+ * Elle permet de récupérer, insérer, mettre à jour et supprimer des enregistrements de la table PROSPECT.
+ * La classe gère également les exceptions liées à l'accès aux données.
+ *
+ * @author Younes
+ * @version 1.0
+ * @since 2024-03-24
+ */
 public class DaoProspect {
-    //Methode pour recuperer la liste complete des Prospects avec tous les champs
-    public static ArrayList<Prospect> findAllProspects() throws SQLException, IOException, DaoException {
+    /**
+     * Récupère la liste complète des prospets depuis la base de données.
+     *
+     * @return La liste des prospects.
+     * @throws Exception si une erreur survient lors de la récupération des données ou de l'instanciation des objets Prospects.
+     * @see Prospect
+     */
+    public static ArrayList<Prospect> findAllProspects() throws Exception {
         Statement statement = null;
         String sql = "SELECT * FROM PROSPECT ORDER BY RAISONSOCIAL ASC";
         ArrayList<Prospect> prospects = new ArrayList<>();
 
-        Connection con = Connexion.getConnection();
-        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+        Connection con = Connexion.startConnection();
 
         try {
             statement = con.createStatement();
@@ -46,8 +60,12 @@ public class DaoProspect {
                         telephone, mail, commentaire, dateProspection, prospectInteresse);
                 prospects.add(prospect);
             }
-        } catch (SQLException | EntitiesException e) {
-            throw new SQLException("Erreur pour voir la base de donnée");
+        } catch (SQLException e) {
+            MyLogger.LOGGER.log(Level.SEVERE, "Erreur sql pour recuperer la bdd prospects: "+e.getMessage(), e);
+            throw new DaoException ("Erreur pour recuperer la liste des prospects", 3);
+        } catch (EntitiesException e){
+            MyLogger.LOGGER.log(Level.SEVERE, "Erreur sql pour recuperer la bdd prospects: "+e.getMessage(), e);
+            throw new EntitiesException ("Erreur pour instencier le prospet",3);
         } finally {
             if (statement != null) {
                 statement.close();
@@ -56,13 +74,20 @@ public class DaoProspect {
         return prospects;
     }
 
-    //Methode pour recuperer 1 Prospect selon la raison social avec tous les champs du prospect
-    public static Prospect findByNameProspect(String filtreRaisonSocial) throws SQLException, IOException, DaoException {
+    /**
+     * Récupère un prospect depuis la base de données en fonction de sa raison sociale.
+     *
+     * @param filtreRaisonSocial La raison sociale du prospect à rechercher.
+     * @return Le prospect correspondant à la raison sociale spécifiée.
+     * @throws Exception si une erreur survient lors de la recherche du prospect ou lors de l'instanciation de l'objet Proespect.
+     * @throws DaoException si le prospect spécifié n'est pas trouvé dans la base de données.
+     * @see Prospect
+     */
+    public static Prospect findByNameProspect(String filtreRaisonSocial) throws Exception {
         PreparedStatement findByNameProspect = null;
         String sql = "SELECT * FROM prospect WHERE RAISONSOCIAL = ?";
 
-        Connection con = Connexion.getConnection();
-        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+        Connection con = Connexion.startConnection();
 
         try {
             findByNameProspect = con.prepareStatement(sql);
@@ -85,26 +110,38 @@ public class DaoProspect {
 
                 String prospectOuiNon = rs.getString("PROSPECTINTERESSE");
                 EnumProspectInteresse prospectInteresse = EnumProspectInteresse.valueOf(prospectOuiNon);
+
                 return  new Prospect(idProspect, raisonSocial, numRue, nomRue, cdPostal, ville,
                         telephone, mail, commentaire, dateProspection, prospectInteresse);
 
-            } else throw new DaoException("find by name impossible");
-        } catch (SQLException | EntitiesException e) {
-            throw new SQLException("Erreur pour voir la base de donnée");
+            } else throw new DaoException("Impossible de Trouver ce prospet", 3);
+
+        } catch (Exception e){
+            throw e;
+        }
+        finally {
+            if (findByNameProspect != null){findByNameProspect.close();}
         }
 
     }
 
-    //Methode pour create un prospect
-    public static void creatProspect(Prospect prospect) throws SQLException, IOException, DaoException {
+    /**
+     * Crée un nouveau prospect dans la base de données.
+     *
+     * @param prospect Le prospect à créer.
+     * @throws Exception si une erreur survient lors de la création du propsect.
+     * @throws DaoException si une erreur spécifique à la base de données survient lors de la création du prospect,
+     *                       comme une violation de contrainte d'unicité ou une longueur de champ dépassée.
+     * @see Prospect
+     */
+    public static void creatProspect(Prospect prospect) throws Exception {
         PreparedStatement creatProspect = null;
         String sql = """
             INSERT INTO prospect (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`, 
             `TELEPHONE`, `MAIL`, `COMMENTAIRES`, `DATEPROSPECTION`, `PROSPECTINTERESSE`) 
             VALUES (?,?,?,?,?,?,?,?,?,?);""";
 
-        Connection con = Connexion.getConnection();
-        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+        Connection con = Connexion.startConnection();
 
         try {
             con.setAutoCommit(false);
@@ -124,25 +161,30 @@ public class DaoProspect {
             creatProspect.setString(10, prospect.getProspectInteresse().toString());
 
             creatProspect.executeUpdate();
-            ResultSet rs = creatProspect.getGeneratedKeys();
-            // section pour avoir l'id insere
-            if (rs.next()) {
-                int generatedKey = rs.getInt(1);
-                System.out.println("Generated ID is: " + generatedKey);
-            } else {
-                System.out.println("No Id was generated");
-            }
+
             con.commit();
-        } catch (SQLException ex) {
-            if (con != null) {
-                try {
-                    System.err.print("Rollback transaction");
-                    con.rollback();
-                } catch (SQLException excep) {
-                    throw new SQLException(excep.getMessage());
-                }
+
+            //Rollback transaction on error
+        } catch (SQLException ex){
+            if (con !=null) {
+                MyLogger.LOGGER.log(Level.SEVERE, "Transaction create prospect rolled back, cause: "+
+                        ex.getMessage(), ex);
+                con.rollback();
             }
-            throw new SQLException("Insert problem: " + ex.getMessage());
+            if (ex.getErrorCode()==1062){
+                throw new DaoException ("Raison social existe déja", 2);
+            }
+            else if (ex.getErrorCode()==1406)
+            {
+                int startIndex = ex.getLocalizedMessage().lastIndexOf("column '");
+                int lastIndex = ex.getLocalizedMessage().indexOf("' at row 1");
+                String colonnName = ex.getLocalizedMessage().substring(startIndex +8,lastIndex);
+
+                throw new DaoException("Trop de caractères dans le "+colonnName,2);
+            }
+            else {MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage()+" erreur: "+ex.getErrorCode(), ex);
+                throw new SQLException(ex.getMessage());}
+
         } finally {
             if (creatProspect != null) {
                 creatProspect.close();
@@ -153,16 +195,23 @@ public class DaoProspect {
         }
     }
 
-    //Methode pour update un prospect
-    public static void updateProspect(Prospect prospect) throws SQLException, IOException, DaoException {
+    /**
+     * Met à jour les informations d'un prospect dans la base de données.
+     *
+     * @param prospect Le prospect avec les informations mises à jour.
+     * @throws Exception si une erreur survient lors de la mise à jour du prospect.
+     * @throws DaoException si une erreur spécifique à la base de données survient lors de la mise à jour du prospect,
+     *                       comme une violation de contrainte d'unicité ou une longueur de champ dépassée.
+     * @see Prospect
+     */
+    public static void updateProspect(Prospect prospect) throws Exception {
         PreparedStatement updateProspect = null;
         String sql = """
             UPDATE prospect SET RAISONSOCIAL=?, NUMRUE=?, NOMRUE=?, CDPOSTAL=?, VILLE=? , 
             TELEPHONE=?, MAIL=?, COMMENTAIRES=?, DATEPROSPECTION=?, PROSPECTINTERESSE=? WHERE IDPROSPECT=?
             """;
 
-        Connection con = Connexion.getConnection();
-        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+        Connection con = Connexion.startConnection();
 
         try {
             con.setAutoCommit(false);
@@ -182,24 +231,29 @@ public class DaoProspect {
             updateProspect.setString(10, prospect.getProspectInteresse().toString());
             updateProspect.setInt(11, prospect.getId());
 
-            int rowsAffected = updateProspect.executeUpdate();
+            updateProspect.executeUpdate();
 
-            if (rowsAffected > 0){
-                System.out.println("Prospect met a jour.");
-            }else {
-                System.out.println("Aucun prospect n'est mis a jour.");
-            }
             con.commit();
-        } catch (SQLException ex) {
-            if (con != null) {
-                try {
-                    System.err.print("Rollback transaction ");
-                    con.rollback();
-                } catch (SQLException excep) {
-                    throw new SQLException(excep.getMessage());
-                }
+        } catch (SQLException ex){
+            if (con !=null) {
+                MyLogger.LOGGER.log(Level.SEVERE, "Transaction update prospect rolled back, cause: "+
+                        ex.getMessage(), ex);
+                con.rollback();
             }
-            throw new SQLException("Problem de mise a jour du prospect: " + ex.getMessage());
+            if (ex.getErrorCode()==1062){
+                throw new DaoException ("Raison social existe déja", 2);
+            }
+            else if (ex.getErrorCode()==1406)
+            {
+                int startIndex = ex.getLocalizedMessage().lastIndexOf("column '");
+                int lastIndex = ex.getLocalizedMessage().indexOf("' at row 1");
+                String colonnName = ex.getLocalizedMessage().substring(startIndex +8,lastIndex);
+
+                throw new DaoException("Trop de caractères dans le "+colonnName,2);
+            }
+            else {MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage()+" erreur: "+ex.getErrorCode(), ex);
+                throw new SQLException(ex.getMessage());}
+
         } finally {
             if (updateProspect != null) {
                 updateProspect.close();
@@ -210,12 +264,18 @@ public class DaoProspect {
         }
     }
 
-    //Methode pour delete un prospect
-    public static void deletProspect (int idProspect) throws SQLException, IOException, DaoException {
+    /**
+     * Supprime un prospect de la base de données en fonction de son identifiant.
+     *
+     * @param idProspect L'identifiant du prospect à supprimer.
+     * @throws Exception si une erreur survient lors de la suppression du prospect.
+     * @throws DaoException si une erreur spécifique à la base de données survient lors de la suppression du prospect.
+     */
+    public static void deletProspect (int idProspect) throws Exception {
         PreparedStatement deletProspect = null;
         String sql = "DELETE FROM prospect WHERE IDPROSPECT = ?";
-        Connection con = Connexion.getConnection();
-        if (con==null){throw new DaoException("Problem d'accés a la base de données");}
+        Connection con = Connexion.startConnection();
+        if (con==null){throw new DaoException("Problem d'accés a la base de données", 5);}
 
         try{
             con.setAutoCommit(false);
@@ -223,24 +283,14 @@ public class DaoProspect {
 
             deletProspect.setInt(1, idProspect);
 
-            int rowsAffected = deletProspect.executeUpdate();
-
-            if (rowsAffected > 0){
-                System.out.println("Prospect supprimé avec sucssé.");
-            }else {
-                System.out.println("Aucune suppression");
-            }
             con.commit();
         }catch (SQLException ex){
             if (con != null){
-                try {
-                    System.err.print("Rollback transaction");
-                    con.rollback();
-                }catch (SQLException excp){
-                    throw new SQLException(excp.getMessage());
-                }
+                MyLogger.LOGGER.log(Level.SEVERE, "Transaction delete prospect rolled back, cause: "+
+                        ex.getMessage(), ex);
+                con.rollback();
             }
-            throw new SQLException("Problem de suppression: "+ex.getMessage());
+            throw ex;
         }finally {
             if (deletProspect !=null){
                 deletProspect.close();

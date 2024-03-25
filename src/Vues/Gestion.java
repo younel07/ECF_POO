@@ -4,6 +4,8 @@ import Controlleur.ContAccueil;
 import Controlleur.ContGestion;
 import Dao.DaoException;
 import entites.EntitiesException;
+import logs.MyLogger;
+import outils.DateFormatter;
 import outils.EnumProspectInteresse;
 
 import javax.swing.*;
@@ -14,7 +16,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
 
+/**
+ * Cette classe représente une fenêtre de gestion des entités (clients ou prospects).
+ * Elle permet de créer, modifier ou supprimer des entités en fonction des paramètres spécifiés lors de sa création.
+ *
+ * @author Younes
+ * @version 1.0
+ * @since 2024-03-24
+ */
 public class Gestion  extends JDialog {
     private JPanel pnlTitre;
     private JPanel pnlBtns;
@@ -60,6 +71,13 @@ public class Gestion  extends JDialog {
     private JLabel lblProspectInteresse;
     private JLabel lblChampOblig;
 
+    /**
+     * Constructeur de la classe Gestion.
+     * Crée une nouvelle instance de Gestion avec les paramètres spécifiés.
+     *
+     * @param isClientSelected   Indique si l'entité à gérer est un client.
+     * @param isProspectSelected Indique si l'entité à gérer est un prospect.
+     */
     public Gestion(boolean isClientSelected, boolean isProspectSelected) {
         setTitle("Gestion des entités");
         setContentPane(pnlContent);
@@ -127,7 +145,7 @@ public class Gestion  extends JDialog {
                 txtVille.setText(ContGestion.recupProspect().getVille());
                 txtTelephone.setText(ContGestion.recupProspect().getTelephone());
                 txtMail.setText(ContGestion.recupProspect().getMail());
-                txtCA.setText(ContGestion.afficherDate(ContGestion.recupProspect().getDateProspection()));
+                txtCA.setText(DateFormatter.afficherDate(ContGestion.recupProspect().getDateProspection()));
                 txtNbrEmploye.setText(String.valueOf(ContGestion.recupProspect().getProspectInteresse()));
                 txtCommentaire.setText(ContGestion.recupProspect().getCommentaire());
             }
@@ -174,7 +192,7 @@ public class Gestion  extends JDialog {
                 txtTelephone.setEnabled(false);
                 txtMail.setText(ContGestion.recupProspect().getMail());
                 txtMail.setEnabled(false);
-                txtCA.setText(ContGestion.afficherDate(ContGestion.recupProspect().getDateProspection()));
+                txtCA.setText(DateFormatter.afficherDate(ContGestion.recupProspect().getDateProspection()));
                 txtCA.setEnabled(false);
                 txtNbrEmploye.setText(String.valueOf(ContGestion.recupProspect().getProspectInteresse()));
                 txtNbrEmploye.setEnabled(false);
@@ -187,6 +205,13 @@ public class Gestion  extends JDialog {
         //Boutton Valider
         {
         btnValider.addActionListener(new ActionListener() {
+            /**
+             * Ajoute un écouteur d'événements au bouton Valider.
+             * Lorsque le bouton est cliqué, cette méthode est déclenchée pour valider la création, la modification ou la suppression
+             * de l'entité (client ou prospect) en cours.
+             *
+             * @param e L'événement ActionEvent déclenché par le clic sur le bouton "Retour".
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -234,11 +259,25 @@ public class Gestion  extends JDialog {
                             Gestion.this.dispose();
                         }
                     }
-                } catch (SQLException | IOException | DaoException | EntitiesException ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-                }catch (NumberFormatException nfex)
+                } catch (DaoException ex){
+                    if (ex.getSeverityLevel() >2) {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
+                    }else JOptionPane.showMessageDialog(null,ex.getMessage());
+                } catch (NumberFormatException nfex)
                 {JOptionPane.showMessageDialog(null,
-                        "Le chiffre d'affaire ou le nombre d'employes est vide");}
+                        "Le chiffre d'affaire ou le nombre d'employes est vide");
+                } catch (EntitiesException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                    JOptionPane.showMessageDialog(null,
+                            "Erreur est survenu veuiller réssayer ultérieurement",
+                            "Erreur", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
+                }
             }
 
             //Creation de Prospect
@@ -270,7 +309,7 @@ public class Gestion  extends JDialog {
                             String ville = txtVille.getText();
                             String telephone = txtTelephone.getText();
                             String mail = txtMail.getText();
-                            LocalDate dateProspection = ContGestion.convertirDate(txtCA.getText());
+                            LocalDate dateProspection = DateFormatter.convertirDate(txtCA.getText());
                             EnumProspectInteresse prostIntere = EnumProspectInteresse.valueOf(txtNbrEmploye.getText());
                             String commentaire = txtCommentaire.getText();
 
@@ -282,12 +321,25 @@ public class Gestion  extends JDialog {
                             Gestion.this.dispose();
                         }
                     }
-                } catch (SQLException | IOException | DaoException | EntitiesException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }catch (DateTimeParseException dte){
+                } catch (DaoException ex){
+                    if (ex.getSeverityLevel() >2) {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
+                    }else JOptionPane.showMessageDialog(null,ex.getMessage());
+                } catch (DateTimeParseException dte){
                     JOptionPane.showMessageDialog(null, "Date doit etre jj/mm/aaaa");
-                }catch (IllegalArgumentException illEx){
+                } catch (IllegalArgumentException illEx){
                     JOptionPane.showMessageDialog(null, "Prospect intersse doit etre oui ou non");
+                } catch (EntitiesException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                    JOptionPane.showMessageDialog(null,
+                            "Erreur est survenu veuiller réssayer ultérieurement",
+                            "Erreur", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
                 }
             }
 
@@ -333,13 +385,32 @@ public class Gestion  extends JDialog {
                             Gestion.this.dispose();
                         }
                     }
-                } catch ( IOException | DaoException | EntitiesException ex) {
+                } catch (DaoException ex)
+                {
+                    if (ex.getSeverityLevel() >2)
+                    {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,ex.getMessage());
+                    }
+                } catch (NumberFormatException nfex) {
+                    JOptionPane.showMessageDialog(null,
+                        "Le chiffre d'affaire ou le nombre d'employes est vide");
+                } catch (EntitiesException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
-                } catch (SQLException sqEx){JOptionPane.showMessageDialog(null,
-                        "Cette raison social existe déja, veuillez la modifier");}
-                catch (NumberFormatException nfex)
-                {JOptionPane.showMessageDialog(null,
-                        "Le chiffre d'affaire ou le nombre d'employes est vide");}
+                } catch (Exception ex)
+                {
+                    MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                    JOptionPane.showMessageDialog(null,
+                            "Erreur est survenu veuiller réssayer ultérieurement",
+                            "Erreur", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
+                }
             }
 
             //Modification de Prospect
@@ -371,7 +442,7 @@ public class Gestion  extends JDialog {
                                 String ville = txtVille.getText();
                                 String telephone = txtTelephone.getText();
                                 String mail = txtMail.getText();
-                                LocalDate dateProspection = ContGestion.convertirDate(txtCA.getText());
+                                LocalDate dateProspection = DateFormatter.convertirDate(txtCA.getText());
                                 EnumProspectInteresse prostIntere = EnumProspectInteresse.valueOf(txtNbrEmploye.getText());
                                 String commentaire = txtCommentaire.getText();
 
@@ -383,16 +454,27 @@ public class Gestion  extends JDialog {
                                 Gestion.this.dispose();
                             }
                         }
-                    } catch ( IOException | DaoException | EntitiesException ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage());
-                    } catch (SQLException sqEx){JOptionPane.showMessageDialog(null,
-                            "Cette raison social existe déja, veuillez la modifier");}
-                    catch (DateTimeParseException dte){
+                    } catch (DaoException ex){
+                        if (ex.getSeverityLevel() >2) {
+                            MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                            JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                    JOptionPane.ERROR_MESSAGE);
+                            System.exit(1);
+                        }else JOptionPane.showMessageDialog(null,ex.getMessage());
+                    } catch (DateTimeParseException dte){
                         JOptionPane.showMessageDialog(null, "Date doit etre jj/mm/aaaa");
-                    }catch (IllegalArgumentException illEx){
+                    } catch (IllegalArgumentException illEx){
                         JOptionPane.showMessageDialog(null, "Prospect intersse doit etre oui ou non");
+                    } catch (EntitiesException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    } catch (Exception ex) {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null,
+                                "Erreur est survenu veuiller réssayer ultérieurement",
+                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
                     }
-                }
+            }
 
             //----------------- Validation de la suppression -----------------
             //Suppression d'un Client
@@ -410,8 +492,21 @@ public class Gestion  extends JDialog {
                         ContGestion.launchAccueil();
                         Gestion.this.dispose();
                     }
-                } catch (SQLException | IOException | DaoException ex) {
+                } catch (DaoException ex){
+                    if (ex.getSeverityLevel() >2) {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
+                    }else JOptionPane.showMessageDialog(null,ex.getMessage());
+                } catch (EntitiesException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                    JOptionPane.showMessageDialog(null,
+                            "Erreur est survenu veuiller réssayer ultérieurement",
+                            "Erreur", JOptionPane.ERROR_MESSAGE);
+                    System.exit(1);
                 }
             }
             //Supression d'un Prospect
@@ -429,8 +524,21 @@ public class Gestion  extends JDialog {
                             ContGestion.launchAccueil();
                             Gestion.this.dispose();
                         }
-                    } catch (SQLException | IOException | DaoException ex) {
+                    } catch (DaoException ex){
+                        if (ex.getSeverityLevel() >2) {
+                            MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                            JOptionPane.showMessageDialog(null, ex.getMessage(), "Connexion",
+                                    JOptionPane.ERROR_MESSAGE);
+                            System.exit(1);
+                        }else JOptionPane.showMessageDialog(null,ex.getMessage());
+                    } catch (EntitiesException ex) {
                         JOptionPane.showMessageDialog(null, ex.getMessage());
+                    } catch (Exception ex) {
+                        MyLogger.LOGGER.log(Level.SEVERE, "Erreur: "+ ex.getMessage(), ex);
+                        JOptionPane.showMessageDialog(null,
+                                "Erreur est survenu veuiller réssayer ultérieurement",
+                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                        System.exit(1);
                     }
             }
             }
@@ -442,6 +550,12 @@ public class Gestion  extends JDialog {
         //Boutton Retour
         {
             btnRetour.addActionListener(new ActionListener() {
+                /**
+                 * Méthode appelée lorsqu'un clic est effectué sur le bouton "Retour".
+                 * Cette méthode ferme la fenêtre d'affichage de la liste et réinitialise l'accueil.
+                 *
+                 * @param e L'événement ActionEvent déclenché par le clic sur le bouton "Retour".
+                 */
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Gestion.this.dispose();
@@ -452,6 +566,12 @@ public class Gestion  extends JDialog {
         //Boutton quitter
         {
             btnQuitter.addActionListener(new ActionListener() {
+                /**
+                 * Méthode appelée lorsqu'un clic est effectué sur le bouton "Quitter".
+                 * Cette méthode ferme la fenêtre d'affichage de la liste.
+                 *
+                 * @param e L'événement ActionEvent déclenché par le clic sur le bouton "Quitter".
+                 */
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     dispose();
