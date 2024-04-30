@@ -132,3 +132,150 @@
 22/03/2024 11:32:05 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
 22/03/2024 11:32:14 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'TELEPHONE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
 22/03/2024 11:33:24 Level : SEVERE / Message : Transaction update client rolled back, cause: Data truncation: Data too long for column 'VILLE' at row 1 / Méthode : updateClient / Classe : Dao.DaoClient
+16/04/2024 08:40:19 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+16/04/2024 08:40:20 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+16/04/2024 08:40:53 Level : SEVERE / Message : Erreur lors de la lecture du fichier de propriétés / Méthode : startConnection / Classe : Dao.Connexion
+16/04/2024 08:40:53 Level : SEVERE / Message : Erreur: Erreur est survenue veuillez réessayer ultérieurement / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+16/04/2024 08:40:55 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+16/04/2024 08:40:56 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+16/04/2024 08:41:07 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+16/04/2024 08:41:07 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+16/04/2024 08:41:43 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+16/04/2024 08:41:43 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+16/04/2024 08:43:06 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+16/04/2024 08:43:06 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+16/04/2024 08:43:08 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+16/04/2024 08:43:08 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+16/04/2024 08:43:52 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+16/04/2024 08:43:52 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+19/04/2024 09:09:58 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+19/04/2024 09:10:00 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+19/04/2024 09:10:04 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+19/04/2024 09:10:04 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+19/04/2024 09:10:27 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+19/04/2024 09:10:27 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:07:05 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:07:07 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:07:09 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:07:09 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:07:30 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:07:30 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:07:32 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:07:32 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:09:38 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:09:39 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:09:40 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:09:40 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:10:14 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:10:15 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:10:59 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:11:00 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:11:01 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:11:01 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexionjdbc:mysql://localhost:3306/gcp?serverTimezone=UTC / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:11:53 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:11:53 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:11:54 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:11:54 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:11:58 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:11:58 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:12:49 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:12:49 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:12:50 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:12:51 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:13:45 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:13:47 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:13:48 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:14:10 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:14:17 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+25/04/2024 10:14:18 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+25/04/2024 10:14:19 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+25/04/2024 10:14:50 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+25/04/2024 10:14:50 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:50:31 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:50:33 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:50:35 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:50:35 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:52:14 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:15 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:16 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:52:16 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:52:42 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:42 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:49 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:50 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:52:55 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:54:15 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:54:38 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:54:39 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:54:45 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:55:43 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:55:43 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:55:44 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:55:44 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxProspects / Classe : Vues.Accueil
+29/04/2024 10:56:29 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:56:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:56:31 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:56:31 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:58:05 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:58:06 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:58:07 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 10:58:07 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 10:59:01 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 10:59:01 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 10:59:02 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:31:10 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:31:11 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:31:13 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:34:01 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:34:01 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:34:03 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:34:43 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:34:43 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:34:44 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:34:44 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:35:46 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:35:46 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:35:51 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:35:51 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:36:53 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:36:53 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:37:06 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:37:06 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:39:26 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:39:26 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:39:29 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:39:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:42:41 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:42:41 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:42:43 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:42:43 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:43:01 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:43:02 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:43:29 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:43:29 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:43:31 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:43:32 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:43:33 Level : SEVERE / Message : Erreur de connexion / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:43:33 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:45:46 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:45:47 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:45:48 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:46:38 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:46:39 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:46:40 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:48:12 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:48:13 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:48:15 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:48:28 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:48:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:48:40 Level : SEVERE / Message : Erreur: inStream parameter is null / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:49:22 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:49:23 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:49:34 Level : SEVERE / Message : Erreur: com.mysql.cj.jdbc.Driver / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:49:50 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:49:50 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:53:24 Level : SEVERE / Message : Erreur sql / Méthode : startConnection / Classe : Dao.Connexion
+29/04/2024 12:53:24 Level : SEVERE / Message : Erreur: La base de données ne peut pas s'ouvrir : problème de connexion / Méthode : remplirComboBoxClients / Classe : Vues.Accueil
+29/04/2024 12:53:28 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+29/04/2024 12:53:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+29/04/2024 12:54:03 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1

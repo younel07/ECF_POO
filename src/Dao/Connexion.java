@@ -32,7 +32,12 @@ public class Connexion {
      */
     public static Connection startConnection() throws Exception {
         Properties dataProperties = new Properties();
-        File fichier = new File("DatabaseClientProspect.properties");
+        File fichier = new File("databaseClientProspect.properties");
+
+        if (!fichier.exists()) {
+            throw new DaoException("Le fichier de propriétés 'databaseClientProspect.properties' n'existe pas", 3);
+        }
+
         try (FileInputStream input = new FileInputStream(fichier)) {
             dataProperties.load(input);
 

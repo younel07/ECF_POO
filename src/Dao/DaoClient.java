@@ -274,6 +274,7 @@ public class DaoClient {
             deletClient =  con.prepareStatement(sql);
 
             deletClient.setInt(1, idClient);
+            deletClient.executeUpdate();
 
             con.commit();
         }catch (SQLException ex){
