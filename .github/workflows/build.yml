@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - ECF_POO
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
