@@ -136,10 +136,10 @@ public class DaoProspect {
      */
     public static void creatProspect(Prospect prospect) throws Exception {
         PreparedStatement creatProspect = null;
-        String sql = """
-            INSERT INTO prospect (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`, 
-            `TELEPHONE`, `MAIL`, `COMMENTAIRES`, `DATEPROSPECTION`, `PROSPECTINTERESSE`) 
-            VALUES (?,?,?,?,?,?,?,?,?,?);""";
+        String sql =
+            "INSERT INTO prospect (`RAISONSOCIAL`, `NUMRUE`, `NOMRUE`, `CDPOSTAL`, `VILLE`,`TELEPHONE`," +
+                    " `MAIL`, `COMMENTAIRES`, `DATEPROSPECTION`, `PROSPECTINTERESSE`) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         Connection con = Connexion.startConnection();
 
@@ -206,10 +206,8 @@ public class DaoProspect {
      */
     public static void updateProspect(Prospect prospect) throws Exception {
         PreparedStatement updateProspect = null;
-        String sql = """
-            UPDATE prospect SET RAISONSOCIAL=?, NUMRUE=?, NOMRUE=?, CDPOSTAL=?, VILLE=? , 
-            TELEPHONE=?, MAIL=?, COMMENTAIRES=?, DATEPROSPECTION=?, PROSPECTINTERESSE=? WHERE IDPROSPECT=?
-            """;
+        String sql = " UPDATE prospect SET RAISONSOCIAL=?, NUMRUE=?, NOMRUE=?, CDPOSTAL=?, VILLE=? , " +
+                "TELEPHONE=?, MAIL=?, COMMENTAIRES=?, DATEPROSPECTION=?, PROSPECTINTERESSE=? WHERE IDPROSPECT=? ";
 
         Connection con = Connexion.startConnection();
 

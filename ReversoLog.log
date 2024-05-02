@@ -279,3 +279,11 @@
 29/04/2024 12:53:28 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
 29/04/2024 12:53:29 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
 29/04/2024 12:54:03 Level : INFO / Message : Base de données fermée / Méthode : run / Classe : Dao.Connexion$1
+02/05/2024 09:09:06 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+02/05/2024 09:09:08 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+02/05/2024 09:09:19 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+02/05/2024 09:09:20 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+02/05/2024 09:15:39 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+02/05/2024 09:15:39 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
+02/05/2024 09:15:49 Level : INFO / Message : debut d'application / Méthode : main / Classe : Main
+02/05/2024 09:15:50 Level : INFO / Message : fin d'application / Méthode : main / Classe : Main
