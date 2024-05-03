@@ -1,6 +1,7 @@
 import Controlleur.ContAccueil;
 import Dao.DaoException;
 import Vues.Accueil;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import entites.EntitiesException;
 import logs.FormatterLog;
 import logs.MyLogger;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class Main {
     private static final Logger LOGGER = MyLogger.LOGGER;// Logger instance
     private static FileHandler fh = null;
-    public static void main(String[] args) throws Exception {
+    public static void main(MysqlxDatatypes.Scalar.String[] args) throws Exception {
 
         try {
             //Lancement du fichier log

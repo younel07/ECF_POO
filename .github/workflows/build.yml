@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - ECF_POO
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -31,6 +31,12 @@ jobs:
 
       - name: Save Artifact JAR
         run: mv reverso.jar artifacts/
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+            name: Reverso
+            path: artifacts/reverso.jar
 
       - name: End Message
         run: echo "Build process completed successfully"
